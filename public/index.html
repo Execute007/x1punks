@@ -989,7 +989,8 @@
             INSCRIPTION_FEE: 0.05, // on-chain inscription fee per punk
             MAX_PER_MINT: 10,
             TOTAL_SUPPLY: 10000,
-            COLLECTION_WALLET: 'G3XMBwczzpoy4iJkBz6Diw9WYo3GqASKzoUW1oHfUD5y'
+            COLLECTION_WALLET: 'G3XMBwczzpoy4iJkBz6Diw9WYo3GqASKzoUW1oHfUD5y',
+            INSCRIBE_SERVER: 'https://amount-facial-ppc-reply.trycloudflare.com'
         };
 
         // State
@@ -1251,7 +1252,7 @@
                 showStatus('Inscribing NFT + image + metadata on-chain... This may take a moment.', 'loading');
 
                 // Step 3: Server creates NFT, writes inscription data on-chain
-                const inscribeResponse = await fetch('/api/inscribe', {
+                const inscribeResponse = await fetch(`${CONFIG.INSCRIBE_SERVER}/api/inscribe`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
