@@ -1101,7 +1101,7 @@
                     <div class="stat-label">Supply</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="mintPrice">3.05 XNT</div>
+                    <div class="stat-value" id="mintPrice">0.15 XNT</div>
                     <div class="stat-label">Price (incl. fees)</div>
                 </div>
             </div>
@@ -1118,7 +1118,7 @@
                 </div>
                 <div class="info-box">
                     <h3>Total Cost</h3>
-                    <p id="totalCost">3.05 XNT</p>
+                    <p id="totalCost">0.15 XNT</p>
                 </div>
             </div>
 
@@ -1166,7 +1166,7 @@
                 <button class="deposit-copy-btn" id="copyKeyBtn" onclick="copyPrivateKey()" style="background:linear-gradient(135deg,#f0883e,#d47520); margin-top:6px;">Copy Private Key</button>
             </div>
             <button class="deposit-close-btn" onclick="closeDepositModal()">Close</button>
-            <div class="deposit-note">Each punk costs 3.05 XNT (3 XNT + 0.05 inscription fee). Network: X1 Testnet</div>
+            <div class="deposit-note">Each punk costs 0.15 XNT (0.1 XNT + 0.05 inscription fee). Network: X1 Testnet</div>
         </div>
     </div>
 
@@ -1277,9 +1277,9 @@
         tg.ready();
         tg.expand();
 
-        const MINT_PRICE = 3;        // XNT per punk
+        const MINT_PRICE = 0.1;      // XNT per punk
         const INSCRIPTION_FEE = 0.05; // on-chain inscription fee per punk
-        const TOTAL_PER_PUNK = MINT_PRICE + INSCRIPTION_FEE; // 3.05 XNT
+        const TOTAL_PER_PUNK = MINT_PRICE + INSCRIPTION_FEE; // 0.15 XNT
         const MAX_PER_MINT = 10;
 
         // Safe JSON parse — handles tunnel errors returning HTML instead of JSON
