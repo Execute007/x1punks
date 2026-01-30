@@ -868,8 +868,8 @@
                     <div class="stat-label">Total Supply</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="mintPrice">10 XNT</div>
-                    <div class="stat-label">Price</div>
+                    <div class="stat-value" id="mintPrice">3.05 XNT</div>
+                    <div class="stat-label">Price (incl. fees)</div>
                 </div>
             </div>
 
@@ -884,17 +884,17 @@
                 </div>
                 <div class="info-box max-mint-box">
                     <h3>Max Per Inscribe</h3>
-                    <p>25</p>
+                    <p>10</p>
                 </div>
                 <div class="info-box">
                     <h3>Total Cost</h3>
-                    <p id="totalCost">10 XNT</p>
+                    <p id="totalCost">3.05 XNT</p>
                 </div>
             </div>
 
             <div class="quantity-selector">
                 <button class="qty-btn" id="qtyMinus">-</button>
-                <input type="number" class="qty-input" id="qtyInput" value="1" min="1" max="25">
+                <input type="number" class="qty-input" id="qtyInput" value="1" min="1" max="10">
                 <button class="qty-btn" id="qtyPlus">+</button>
             </div>
 
@@ -985,8 +985,9 @@
         // Configuration
         const CONFIG = {
             RPC_URL: 'https://rpc.testnet.x1.xyz',
-            MINT_PRICE: 10, // XNT per punk
-            MAX_PER_MINT: 25,
+            MINT_PRICE: 3, // XNT per punk
+            INSCRIPTION_FEE: 0.05, // on-chain inscription fee per punk
+            MAX_PER_MINT: 10,
             TOTAL_SUPPLY: 10000,
             COLLECTION_WALLET: 'G3XMBwczzpoy4iJkBz6Diw9WYo3GqASKzoUW1oHfUD5y'
         };
@@ -1125,7 +1126,8 @@
         }
 
         function updateTotalCost(qty) {
-            totalCost.textContent = `${(CONFIG.MINT_PRICE * qty)} XNT`;
+            const totalPerPunk = CONFIG.MINT_PRICE + CONFIG.INSCRIPTION_FEE;
+            totalCost.textContent = `${(totalPerPunk * qty).toFixed(2)} XNT`;
         }
 
         // Wallet providers
@@ -1184,7 +1186,8 @@
             if (newQty >= 1 && newQty <= CONFIG.MAX_PER_MINT) {
                 quantity = newQty;
                 qtyInput.value = quantity;
-                totalCost.textContent = `${(CONFIG.MINT_PRICE * quantity)} XNT`;
+                const totalPerPunk = CONFIG.MINT_PRICE + CONFIG.INSCRIPTION_FEE;
+                totalCost.textContent = `${(totalPerPunk * quantity).toFixed(2)} XNT`;
                 if (walletConnected) {
                     mintBtn.textContent = `INSCRIBE ${quantity} PUNK${quantity > 1 ? 'S' : ''}`;
                 }
@@ -1212,7 +1215,8 @@
 
                 const wallet = getWalletProvider();
                 const provider = wallet.provider;
-                const totalLamports = CONFIG.MINT_PRICE * quantity * solanaWeb3.LAMPORTS_PER_SOL;
+                const totalPerPunk = CONFIG.MINT_PRICE + CONFIG.INSCRIPTION_FEE;
+                const totalLamports = Math.ceil(totalPerPunk * quantity * solanaWeb3.LAMPORTS_PER_SOL);
 
                 // Step 1: User pays inscription cost to collection wallet
                 const transaction = new solanaWeb3.Transaction().add(
@@ -1417,7 +1421,7 @@
 
         async function showMintCelebration(mintedNfts) {
             skipCelebration = false;
-            const isMaxMint = mintedNfts.length >= 25;
+            const isMaxMint = mintedNfts.length >= 10;
 
             // Max inscribe special intro with party button
             if (isMaxMint) {

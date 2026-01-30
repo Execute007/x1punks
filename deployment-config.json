@@ -5,7 +5,7 @@
   "collectionName": "X1 Punks",
   "symbol": "X1PUNK",
   "totalSupply": 10000,
-  "mintPrice": 10,
+  "mintPrice": 3,
   "royaltyBps": 500,
   "deployedAt": "2026-01-28T00:48:49.474Z"
 }
