@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/**/*.js": {
-      "includeFiles": "mint-state.json,inscriptions-index.json,punks.whitelabel/**"
+      "includeFiles": "mint-state.json,inscriptions-index.json,punks.csv"
     }
   },
   "rewrites": [

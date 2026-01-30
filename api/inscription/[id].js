@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const INSCRIPTIONS_FILE = path.join(__dirname, '..', '..', 'inscriptions-index.json');
-const CSV_PATH = path.join(__dirname, '..', '..', 'punks.whitelabel', 'punks.csv');
+const CSV_PATH = path.join(__dirname, '..', '..', 'punks.csv');
 
 const TOTAL_SUPPLY = 10000;
 const COLLECTION_NAME = 'X1 Punk';
