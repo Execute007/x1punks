@@ -1279,7 +1279,18 @@
 
             } catch (err) {
                 console.error('Inscribe error:', err);
-                showStatus('Inscription failed: ' + err.message, 'error');
+                if (err.message && err.message.includes('insufficient lamports')) {
+                    const match = err.message.match(/insufficient lamports (\d+), need (\d+)/);
+                    if (match) {
+                        const have = (parseInt(match[1]) / 1e9).toFixed(2);
+                        const need = (parseInt(match[2]) / 1e9).toFixed(2);
+                        showStatus(`Insufficient balance. You have ${have} XNT but need ${need} XNT. Please add more XNT to your wallet.`, 'error');
+                    } else {
+                        showStatus('Insufficient balance. Please add more XNT to your wallet.', 'error');
+                    }
+                } else {
+                    showStatus('Inscription failed: ' + err.message, 'error');
+                }
             } finally {
                 document.getElementById('inscribingOverlay').classList.remove('show');
                 mintBtn.disabled = false;
