@@ -29,10 +29,10 @@
     "@metaplex-foundation/umi-bundle-defaults": "^0.8.10",
     "@solana/spl-token": "^0.4.14",
     "@solana/web3.js": "^1.98.4",
+    "arweave": "^1.15.7",
     "bs58": "^6.0.0",
     "canvas": "^3.2.1",
     "dotenv": "^17.2.3",
-    "pinata": "^2.5.3",
-    "telegraf": "^4.16.3"
+    "pinata": "^2.5.3"
   }
 }

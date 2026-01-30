@@ -989,8 +989,8 @@
             INSCRIPTION_FEE: 0.05, // on-chain inscription fee per punk
             MAX_PER_MINT: 10,
             TOTAL_SUPPLY: 10000,
-            COLLECTION_WALLET: 'G3XMBwczzpoy4iJkBz6Diw9WYo3GqASKzoUW1oHfUD5y',
-            INSCRIBE_SERVER: 'https://amount-facial-ppc-reply.trycloudflare.com'
+            COLLECTION_WALLET: 'AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B',
+            INSCRIBE_SERVER: 'https://moisture-shareholders-endif-replaced.trycloudflare.com'
         };
 
         // State
@@ -1029,7 +1029,7 @@
         // Load punk showcase
         async function loadPunkShowcase() {
             try {
-                const response = await fetch('/api/mints');
+                const response = await fetch(`${CONFIG.INSCRIBE_SERVER}/api/mints`);
                 const state = await response.json();
 
                 document.getElementById('totalMinted').textContent = state.mintedCount || 0;
@@ -1057,7 +1057,7 @@
                     container.className = 'punk-item' + (isOwned ? ' owned' : '');
 
                     const imgEl = document.createElement('img');
-                    imgEl.src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${id}.png`;
+                    imgEl.src = mint.imageUrl || `https://arweave.net/${id}`;
                     imgEl.className = 'punk-img';
                     imgEl.alt = `X1 Punk #${id}`;
                     imgEl.title = `X1 Punk #${id}${isOwned ? ' (You own this!)' : ''} - Click for details`;
@@ -1334,12 +1334,14 @@
             try {
                 inscriptionModal.classList.add('show');
                 document.getElementById('modalTitle').textContent = `X1 Punk #${punkId}`;
-                document.getElementById('modalPunkImage').src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${punkId}.png`;
+                // Use Arweave URL from minted data if available
+                const mintInfo = mintedData.find(m => m.id === punkId);
+                document.getElementById('modalPunkImage').src = mintInfo?.imageUrl || `${CONFIG.INSCRIBE_SERVER}/api/image/${punkId}`;
                 document.getElementById('modalAttributes').innerHTML = '<p style="color: #8b949e;">Loading inscription data...</p>';
                 document.getElementById('modalImageSize').textContent = '';
                 document.getElementById('onChainBadge').style.display = 'none';
 
-                const response = await fetch(`/api/inscription/${punkId}`);
+                const response = await fetch(`${CONFIG.INSCRIBE_SERVER}/api/inscription/${punkId}`);
                 const data = await response.json();
 
                 if (data.metadata) {
@@ -1400,7 +1402,7 @@
                 const nft = mintedNfts[i];
 
                 // Show large BOOM punk
-                partyBoomPunk.src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${nft.id}.png`;
+                partyBoomPunk.src = nft.imageUrl || `${CONFIG.INSCRIBE_SERVER}/api/image/${nft.id}`;
                 partyBoomId.textContent = `X1 Punk #${nft.id}`;
                 partyBoomArea.style.display = 'flex';
 
@@ -1409,7 +1411,7 @@
                 container.className = 'party-punk-container';
 
                 const img = document.createElement('img');
-                img.src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${nft.id}.png`;
+                img.src = nft.imageUrl || `${CONFIG.INSCRIBE_SERVER}/api/image/${nft.id}`;
                 img.className = 'party-punk new-arrival';
                 img.onclick = () => showInscriptionDetails(nft.id);
 
@@ -1463,7 +1465,7 @@
                 if (skipCelebration) break;
 
                 const nft = mintedNfts[i];
-                celebrationPunk.src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${nft.id}.png`;
+                celebrationPunk.src = nft.imageUrl || `${CONFIG.INSCRIBE_SERVER}/api/image/${nft.id}`;
                 celebrationId.textContent = `X1 Punk #${nft.id}`;
                 celebrationText.textContent = 'BOOM YOU INSCRIBED!';
                 celebrationCounter.textContent = `${i + 1} of ${mintedNfts.length}`;

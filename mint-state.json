@@ -1,5 +1,5 @@
 {
-  "mintedCount": 122,
+  "mintedCount": 148,
   "mints": [
     {
       "id": 942,
@@ -1830,6 +1830,396 @@
         "imageSize": 7340,
         "imageHash": "798691df0d1f4ab3dbcb2793de642de27af14a3dde13d62d8e01d9372f85c445"
       }
+    },
+    {
+      "id": 4850,
+      "name": "X1 Punk #4850",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "KGR8zU27TGkJz5JoLXt2V7FgZadu2wZpKutMPv7yjzd4J9S7WrCgxbVWLdAsg4TNQxPm9jaUDNyhfV8za5SpUqq",
+      "mintAddress": "FiyfcPSfymQHfDs4cV78tZyNefs7Zy8g4tGwSEwURLBn",
+      "inscribedAt": "2026-01-30T08:44:56.142Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 589,
+        "imageSize": 7104,
+        "imageHash": "60656cd04f04228dae5246474bc806c775634bff9df224de689bd6d72c559458"
+      }
+    },
+    {
+      "id": 3911,
+      "name": "X1 Punk #3911",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "CADwvQCxhNSjgQJUdS8K2ePZ2U96KkTU2RXzr4GGYQpU",
+      "inscribedAt": "2026-01-30T08:45:18.141Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 703,
+        "imageSize": 7922,
+        "imageHash": "fb4ea38ea3325025c5312085c927412021ce970a28a1707fd30d934ff81f4301"
+      }
+    },
+    {
+      "id": 5901,
+      "name": "X1 Punk #5901",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "DRiW2vvhK38xJSqUgP4BNJBJmjNDgJVqGkawAYf7p9QE",
+      "inscribedAt": "2026-01-30T08:45:25.242Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 650,
+        "imageSize": 7533,
+        "imageHash": "1330041e119c19f615cabc32079663fac4f1a7ffab760e34a6e8aa01d543bd96"
+      }
+    },
+    {
+      "id": 1470,
+      "name": "X1 Punk #1470",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "5Ae949Sf3i2sYV8KG8pPuXonWUjteTyBfSuuYfhWHd57",
+      "inscribedAt": "2026-01-30T08:45:32.649Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 703,
+        "imageSize": 8120,
+        "imageHash": "a9f58486ed120f8cb071a9aef4b2e2044762a3d9d2133715ef56b0e07aa38d6a"
+      }
+    },
+    {
+      "id": 4092,
+      "name": "X1 Punk #4092",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "FnSRisNYxoJE8SCBADdpKSeVurn9ej1PVyE9DC28kq38",
+      "inscribedAt": "2026-01-30T08:45:40.451Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 698,
+        "imageSize": 6733,
+        "imageHash": "015d308fb57d307852f4de215e618c7e019062f7d83450bf56721bc47947b229"
+      }
+    },
+    {
+      "id": 4187,
+      "name": "X1 Punk #4187",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "Fnh6Cbo6ceZfE3kxWygxLbZjTQoEJpAp5dxMxh5kiYdn",
+      "inscribedAt": "2026-01-30T08:45:46.948Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 642,
+        "imageSize": 6906,
+        "imageHash": "4141cd4b512d11aba45d4ffc662e42492352eccf1b74dd155e8945f6fa249aa2"
+      }
+    },
+    {
+      "id": 9266,
+      "name": "X1 Punk #9266",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "FKCYKryK8pjJ5qERMkPksJmivvdoeqeEPZEGKmPRASEW",
+      "inscribedAt": "2026-01-30T08:45:54.006Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 742,
+        "imageSize": 7493,
+        "imageHash": "98e55f8ac4ff65106c07867017376253cc3fadb6806038f822b4ead6684d4798"
+      }
+    },
+    {
+      "id": 1547,
+      "name": "X1 Punk #1547",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "CcHCUvFtZd75Gu4TXWuwfPni2QLBxW742piXMVZkAhkD",
+      "inscribedAt": "2026-01-30T08:46:01.177Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 640,
+        "imageSize": 7989,
+        "imageHash": "c6e35142577e3c9db35b78a9b3c9d9955b5c1cb7ad62217e474a77c92e138ee2"
+      }
+    },
+    {
+      "id": 81,
+      "name": "X1 Punk #81",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "Fn9hVmUWLAqVigGe48rmBiFsUKVcV2nCYM85sEMvpLd7",
+      "inscribedAt": "2026-01-30T08:46:08.584Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 636,
+        "imageSize": 7520,
+        "imageHash": "6947128d5a4d94fd2f0fc54a0e52a52a63e95345ba5e9d1561f95066186374bd"
+      }
+    },
+    {
+      "id": 6513,
+      "name": "X1 Punk #6513",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "HETYgyiGXZvBZ161j2Q9JqqnEjTUAAUGjYwGsYnMM41R",
+      "inscribedAt": "2026-01-30T08:46:17.386Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 700,
+        "imageSize": 7518,
+        "imageHash": "ee2e9663ab201f64548135c0e4a1777903f099faaeb5343894f8cd40a72b0e25"
+      }
+    },
+    {
+      "id": 5177,
+      "name": "X1 Punk #5177",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "7rdReK2gWrVmqNxLXbcTRwdZ5UCsosThuvc18ReMtg88d2mRE1saSk34qkABmjmordKZK9WTvaRc84RZWbBL4ss",
+      "mintAddress": "9FpB3AgYor6SQx6rJtMCAVsjyQB42Kww7HxcyYY9rf8s",
+      "inscribedAt": "2026-01-30T08:46:25.186Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 710,
+        "imageSize": 7802,
+        "imageHash": "7e78fd311f332874cab5fc4017d8c70cc70dcb5a03840e9949c25b2dc35bc979"
+      }
+    },
+    {
+      "id": 3899,
+      "name": "X1 Punk #3899",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "3iu1ty1eSRfBNzNcjydaUAmCUUsvED9wqd5aNaQ88PtPfn6StWDwafh1wdD4g4LZwvnDC51ffCJGzGgdqfReAwn8",
+      "mintAddress": "C24aQLu9NhnqswciND4xV1uMKrHpdKJYx9U5iuFyqmr1",
+      "inscribedAt": "2026-01-30T08:51:06.151Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 648,
+        "imageSize": 7921,
+        "imageHash": "a5a2d0522e43f782f738a800cf3205fdacf6087e66e3865f0d7a915d8fb5018d"
+      }
+    },
+    {
+      "id": 8667,
+      "name": "X1 Punk #8667",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "2BDBqKBNrhUqKKSWxiz27nGzmJeedrPLVYojtNYignXFN7pXYiwWXhFepSio9ozvN98YugAwtxxKNfm2Xw4yUhi1",
+      "mintAddress": "GD8KY8qTFjRvaXhPf4YiJURDMdGLPPm2zwqik6Bt4Ps8",
+      "inscribedAt": "2026-01-30T08:53:45.162Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 685,
+        "imageSize": 6516,
+        "imageHash": "5176b783f89494bf5df32d40727b93926b295385d426fa2f337acaa01eda5793"
+      }
+    },
+    {
+      "id": 2211,
+      "name": "X1 Punk #2211",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "2q6k7QHyfQRe3RAPFmX2eqA6NYZZEP6Y39WQALud8pNQA6SJu4GUDew7dsJwazCkd8b6VXzR5f8MfZvHGpt5tKKU",
+      "mintAddress": "AdkZ9movYMYgiMGNvcqprFY9bsQAxmp2xJFrc3e274WU",
+      "inscribedAt": "2026-01-30T08:54:14.300Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 689,
+        "imageSize": 6484,
+        "imageHash": "c40cc4ab086e2d3860d30be2fb7755ae026cc843bf42cd7a3427a8fc32820177"
+      }
+    },
+    {
+      "id": 478,
+      "name": "X1 Punk #478",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "XnMHkTzm3xxPEryNCXcNnMKBC9y7rX8yDSuVYfkbqJRjPQexxVAVp5L5XddxLMNk4nGMYfvzxaaSyorxk3GWYfL",
+      "mintAddress": "9PzmK8fSE7rqZ9XkuEo32iwcVV1ChAGw3T4Td7KfdxJw",
+      "inscribedAt": "2026-01-30T09:23:50.804Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 637,
+        "imageSize": 6990,
+        "imageHash": "8d07198a730d27ffe27abf31ba0631ec6227dde705e5950bb7d02c71f186def8"
+      }
+    },
+    {
+      "id": 9830,
+      "name": "X1 Punk #9830",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "HuUDAJoNXCaUpVxcPDpmsUcqw5wXSEVKxmhFyR6f2FDL",
+      "inscribedAt": "2026-01-30T09:24:40.828Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 687,
+        "imageSize": 7168,
+        "imageHash": "e2636ee7aa27a1156f0f982ed81cf29f9004d6ab9053467eae9bb0d241002c5f"
+      }
+    },
+    {
+      "id": 7561,
+      "name": "X1 Punk #7561",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "C54r5qeWm35km1rf8Bo7ak8Z1vBJsmEhQAJ8XkJpjLLS",
+      "inscribedAt": "2026-01-30T09:24:48.509Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 701,
+        "imageSize": 7316,
+        "imageHash": "96e4f7c55f650af90ce833361e38dc599f5233e1733686e856d9b4e9b5876077"
+      }
+    },
+    {
+      "id": 173,
+      "name": "X1 Punk #173",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "HT7PhcfxCwGpNtfwJVtf44jsWGDuo8P5kGxGsSg7jTNa",
+      "inscribedAt": "2026-01-30T09:24:54.813Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 785,
+        "imageSize": 7218,
+        "imageHash": "580337327cece5e28cfcc0092f2998fa87c025b656795f6e788e285e3e2ec1ff"
+      }
+    },
+    {
+      "id": 9322,
+      "name": "X1 Punk #9322",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "7v9DrdXVKXrBLbojWZokrZYMjBg1tVeViVdWPkUumMs1",
+      "inscribedAt": "2026-01-30T09:25:01.973Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 684,
+        "imageSize": 7330,
+        "imageHash": "3c84949a50504e3d10aa13c9b715cbcc659d31982d6edb16b4ba1d1277e91214"
+      }
+    },
+    {
+      "id": 3017,
+      "name": "X1 Punk #3017",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "HPVjVmP6fuTctKYpWhcPnTiKAz2iie3sdV1sjd277HDL",
+      "inscribedAt": "2026-01-30T09:25:09.089Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 733,
+        "imageSize": 7165,
+        "imageHash": "62cfb58d7aabf7777305ad1f15f1159f3b03a6c65da388ca384c8db91c32d1a0"
+      }
+    },
+    {
+      "id": 9687,
+      "name": "X1 Punk #9687",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "6ENYeeP8PUbqjPxi9hSBCBqinBX2JjdY9Lfk5Hsztx9G",
+      "inscribedAt": "2026-01-30T09:25:15.528Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 693,
+        "imageSize": 7273,
+        "imageHash": "95003bf04cd8ea075f0c968b2d5126d361827c40131542c17ae7f50e0bf260b9"
+      }
+    },
+    {
+      "id": 6697,
+      "name": "X1 Punk #6697",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "EeLT1arixYWF2uzm54VLJHTVCcadevpJERdwCQMY6aKx",
+      "inscribedAt": "2026-01-30T09:25:22.517Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 748,
+        "imageSize": 7096,
+        "imageHash": "c24913fbe50ea909fbc1be45521c219edae14ce8f0f40d8485f9c371d1f9cd2b"
+      }
+    },
+    {
+      "id": 8867,
+      "name": "X1 Punk #8867",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "HkCbmh5Csm8SPvMu3M5dHfkKNdvTBVTTBMjvwPBhqU71",
+      "inscribedAt": "2026-01-30T09:25:29.536Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 753,
+        "imageSize": 7558,
+        "imageHash": "876e92220cd878eb7e7b0e18f7598af4c7a623effe4e0847100cebc26099f48a"
+      }
+    },
+    {
+      "id": 5000,
+      "name": "X1 Punk #5000",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "DXXUwtFZTu6p18JHNz4GaSzsFzqh1SXsfVJKBDES8fim",
+      "inscribedAt": "2026-01-30T09:25:36.646Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 705,
+        "imageSize": 7518,
+        "imageHash": "8f5a4b0f886d89dfe453a75a95677dcaaf029ef26171940b6c38c10f60926d10"
+      }
+    },
+    {
+      "id": 4731,
+      "name": "X1 Punk #4731",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "txSignature": "5TrERt3ueoBve4CGPQTPjdPeZmkiXPfZjGQsxxjLcFVmm8wx1inbnVCPCbjPTRWgzQF4HnqtHGzThJwvUC5mGyne",
+      "mintAddress": "7C1kPPfSAHtBymtAww7oMu8RFjqDwPRjEHLnbPheC9Fn",
+      "inscribedAt": "2026-01-30T09:25:44.295Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 742,
+        "imageSize": 7579,
+        "imageHash": "f67993a47128dd22b2e98dc27bab6e0f2f0e4049d7ca03ac7f7400c99c68c318"
+      }
+    },
+    {
+      "id": 8199,
+      "name": "X1 Punk #8199",
+      "symbol": "X1PUNK",
+      "owner": "8LeHRNV9ghS75sNUpfPy3tjG1RhNZwp9Y6MefkHMuAz6",
+      "txSignature": "4Ypst8TPUFE11Dvg2KwVLoYvriuHvvRt46VbeCD7Dcr5ciXdkMsHxbMs6hQ6rqSyLvg4xs6zqR9dxrGWCkCqCrwH",
+      "mintAddress": "AeMXeUjZU24xjxjJyZMJD2JFotVsTMd15ctswx64yYyF",
+      "inscribedAt": "2026-01-30T09:26:38.911Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 691,
+        "imageSize": 7533,
+        "imageHash": "8bdae5d54781c559b904d035a1e6932f52b5f2189522d2b2b4390227083a849e"
+      }
     }
   ],
   "mintedIds": [
@@ -1954,6 +2344,32 @@
     186,
     8976,
     6668,
-    7160
+    7160,
+    4850,
+    3911,
+    5901,
+    1470,
+    4092,
+    4187,
+    9266,
+    1547,
+    81,
+    6513,
+    5177,
+    3899,
+    8667,
+    2211,
+    478,
+    9830,
+    7561,
+    173,
+    9322,
+    3017,
+    9687,
+    6697,
+    8867,
+    5000,
+    4731,
+    8199
   ]
 }

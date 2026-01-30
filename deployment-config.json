@@ -1,7 +1,7 @@
 {
   "network": "X1 Mainnet",
   "rpc": "https://rpc.testnet.x1.xyz",
-  "collectionWallet": "G3XMBwczzpoy4iJkBz6Diw9WYo3GqASKzoUW1oHfUD5y",
+  "collectionWallet": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
   "collectionName": "X1 Punks",
   "symbol": "X1PUNK",
   "totalSupply": 10000,

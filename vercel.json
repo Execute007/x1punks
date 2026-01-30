@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/**/*.js": {
-      "includeFiles": "mint-state.json,inscriptions-index.json,punks.csv"
+      "includeFiles": "mint-state.json,inscriptions-index.json,punks.csv,punks.whitelabel/punks.csv,arweave-manifest.json"
     }
   },
   "rewrites": [

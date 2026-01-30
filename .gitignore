@@ -2,7 +2,15 @@ node_modules
 generated
 .env
 .env.local
+.env*.local
 wallet.json
+arweave-wallet.json
 users.json
 pinata-upload-progress.json
 pinata-folder-cid.json
+.vercel
+.claude
+X1 wallet
+nul
+background.png
+package-lock.json
