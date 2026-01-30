@@ -1,0 +1,11 @@
+{
+  "network": "X1 Mainnet",
+  "rpc": "https://rpc.testnet.x1.xyz",
+  "collectionWallet": "G3XMBwczzpoy4iJkBz6Diw9WYo3GqASKzoUW1oHfUD5y",
+  "collectionName": "X1 Punks",
+  "symbol": "X1PUNK",
+  "totalSupply": 10000,
+  "mintPrice": 10,
+  "royaltyBps": 500,
+  "deployedAt": "2026-01-28T00:48:49.474Z"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "x1punks",
+  "version": "1.0.0",
+  "description": "X1 Punks - 10,000 unique pixel punks on X1 blockchain",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "generate-wallet": "node generate-wallet.js",
+    "generate-metadata": "node scripts/generate-metadata.js",
+    "deploy": "node scripts/deploy-collection.js",
+    "mint": "node scripts/mint-nft.js"
+  },
+  "keywords": [
+    "nft",
+    "x1",
+    "blockchain",
+    "punks",
+    "solana"
+  ],
+  "author": "X1 Punks",
+  "license": "MIT",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.32.1",
+    "@metaplex-foundation/mpl-candy-machine": "^6.1.0",
+    "@metaplex-foundation/mpl-inscription": "^0.8.0",
+    "@metaplex-foundation/mpl-token-metadata": "^3.4.0",
+    "@metaplex-foundation/umi": "^0.8.10",
+    "@metaplex-foundation/umi-bundle-defaults": "^0.8.10",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4",
+    "bs58": "^6.0.0",
+    "canvas": "^3.2.1",
+    "dotenv": "^17.2.3",
+    "pinata": "^2.5.3",
+    "telegraf": "^4.16.3"
+  }
+}

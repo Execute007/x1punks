@@ -1,0 +1,8 @@
+node_modules
+generated
+.env
+.env.local
+wallet.json
+users.json
+pinata-upload-progress.json
+pinata-folder-cid.json

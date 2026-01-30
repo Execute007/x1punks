@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X1 Punks - Inscribe Your Punk on X1 Blockchain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+            color: #e6edf3;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #30363d;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .logo-x { color: #00d4ff; text-shadow: 0 0 20px #00d4ff; }
+        .logo-text { color: #e6edf3; }
+
+        /* Floating Wallet Button */
+        .floating-wallet {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .wallet-btn {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border: none;
+            color: #0d1117;
+            padding: 14px 28px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .wallet-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .wallet-btn.connected {
+            background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00d4ff 0%, #00a8cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p { font-size: 1.3rem; color: #8b949e; margin-bottom: 10px; }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(0, 212, 255, 0.05);
+            padding: 30px 50px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .stat-label {
+            color: #8b949e;
+            margin-top: 8px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Inscribe Section */
+        .mint-section { margin: 40px 0; text-align: center; }
+        .mint-section h2 {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            margin-bottom: 30px;
+        }
+
+        /* Info boxes */
+        .mint-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .info-box {
+            background: rgba(22, 27, 34, 0.8);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px 30px;
+            text-align: center;
+            min-width: 160px;
+        }
+
+        .info-box h3 { color: #8b949e; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .info-box p { color: #e6edf3; font-size: 1.3rem; font-weight: bold; }
+
+        /* Max Per Inscribe Gold Border */
+        .info-box.max-mint-box {
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            background: rgba(255, 215, 0, 0.05);
+        }
+        .info-box.max-mint-box h3 { color: #ffd700; }
+        .info-box.max-mint-box p { color: #ffd700; }
+
+        /* Quantity selector */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .qty-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #00d4ff;
+            background: transparent;
+            color: #00d4ff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .qty-btn:hover { background: rgba(0, 212, 255, 0.2); }
+
+        .qty-input {
+            width: 80px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e6edf3;
+            background: rgba(22, 27, 34, 0.8);
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: inherit;
+        }
+
+        /* Inscribe Button */
+        .mint-btn {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border: none;
+            color: #0d1117;
+            padding: 18px 50px;
+            font-family: inherit;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .mint-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .mint-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Status */
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .status.show { display: block; }
+        .status.success { background: rgba(35, 134, 54, 0.2); border: 1px solid #238636; color: #3fb950; }
+        .status.error { background: rgba(248, 81, 73, 0.2); border: 1px solid #f85149; color: #f85149; }
+        .status.loading { background: rgba(0, 212, 255, 0.1); border: 1px solid #00d4ff; color: #00d4ff; }
+
+        /* Punk Grid */
+        .punk-section { margin: 60px 0; }
+        .punk-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #00d4ff;
+        }
+
+        .punk-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+            gap: 8px;
+            padding: 30px;
+            background: rgba(13, 17, 23, 0.8);
+            border: 1px solid #30363d;
+            border-radius: 16px;
+        }
+
+        .punk-showcase.empty {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #8b949e;
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+
+        .punk-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .punk-item:hover { transform: scale(1.05); z-index: 5; }
+        .punk-item.owned { border: 2px solid #ffd700; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+
+        .punk-img {
+            width: 100%;
+            aspect-ratio: 1;
+            image-rendering: pixelated;
+            cursor: pointer;
+            display: block;
+        }
+
+        .owned-badge {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            background: #ffd700;
+            color: #000;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Inscription Modal */
+        .inscription-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inscription-modal.show { display: flex; }
+
+        .modal-content {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #8b949e;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-punk-image {
+            width: 200px;
+            height: 200px;
+            image-rendering: pixelated;
+            border-radius: 12px;
+            border: 3px solid #00d4ff;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        .modal-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .attribute-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .attribute-box {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .attribute-label { color: #8b949e; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .attribute-value { color: #e6edf3; font-weight: bold; margin-top: 4px; }
+
+        .modal-image-size { text-align: center; color: #8b949e; margin-top: 10px; font-size: 0.85rem; }
+
+        .on-chain-badge {
+            text-align: center;
+            margin-top: 10px;
+            padding: 8px;
+            background: rgba(35, 134, 54, 0.2);
+            border: 1px solid #238636;
+            border-radius: 8px;
+            color: #3fb950;
+            font-weight: bold;
+        }
+
+        /* Inscribing Loading Screen */
+        .inscribing-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .inscribing-overlay.show { display: flex; }
+
+        .inscribing-content { text-align: center; }
+
+        .inscribing-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid #30363d;
+            border-top: 4px solid #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .inscribing-text {
+            font-size: 1.8rem;
+            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .inscribing-subtext { color: #8b949e; font-size: 1rem; }
+
+        .inscribing-progress {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #ffd700;
+        }
+
+        /* Celebration Overlay */
+        .mint-celebration {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 3001;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mint-celebration.show { display: flex; }
+
+        .celebration-punk {
+            width: 200px;
+            height: 200px;
+            image-rendering: pixelated;
+            border-radius: 15px;
+            border: 5px solid #00d4ff;
+            animation: explode 0.5s ease-out;
+        }
+
+        .celebration-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #00d4ff;
+            text-shadow: 0 0 30px #00d4ff;
+        }
+
+        .celebration-id {
+            font-size: 1.5rem;
+            color: #e6edf3;
+            margin-top: 10px;
+        }
+
+        .celebration-counter {
+            font-size: 1rem;
+            color: #8b949e;
+            margin-top: 10px;
+        }
+
+        /* Rarity celebration colors */
+        .celebration-legendary .celebration-text { color: #ffd700; text-shadow: 0 0 30px #ffd700; }
+        .celebration-legendary .celebration-punk { border-color: #ffd700; box-shadow: 0 0 40px #ffd700; }
+
+        .celebration-epic .celebration-text { color: #a855f7; text-shadow: 0 0 30px #a855f7; }
+        .celebration-epic .celebration-punk { border-color: #a855f7; box-shadow: 0 0 40px #a855f7; }
+
+        .celebration-rare .celebration-text { color: #22c55e; text-shadow: 0 0 30px #22c55e; }
+        .celebration-rare .celebration-punk { border-color: #22c55e; box-shadow: 0 0 40px #22c55e; }
+
+        .celebration-common .celebration-text { color: #00d4ff; text-shadow: 0 0 30px #00d4ff; }
+        .celebration-common .celebration-punk { border-color: #00d4ff; box-shadow: 0 0 40px #00d4ff; }
+
+        .skip-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* MAX INSCRIBE (25) Special Celebration */
+        .mint-celebration.max-mint {
+            background: linear-gradient(135deg,
+                rgba(255, 0, 255, 0.3),
+                rgba(0, 255, 255, 0.3),
+                rgba(255, 255, 0, 0.3));
+            background-size: 400% 400%;
+            animation: maxMintBg 3s ease infinite;
+        }
+        @keyframes maxMintBg {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .mint-celebration.max-mint .celebration-text {
+            font-size: 3rem;
+            color: #ffd700;
+            animation: maxMintText 0.5s ease infinite alternate;
+        }
+        @keyframes maxMintText {
+            0% { transform: scale(1); text-shadow: 0 0 20px #ffd700; }
+            100% { transform: scale(1.1); text-shadow: 0 0 40px #ff6600; }
+        }
+
+        .mint-celebration.max-mint .celebration-punk {
+            border-color: #ffd700;
+            animation: maxMintPunk 0.3s ease infinite alternate;
+        }
+        @keyframes maxMintPunk {
+            0% { box-shadow: 0 0 30px #ffd700; }
+            100% { box-shadow: 0 0 60px #ff6600, 0 0 100px #ffd700; }
+        }
+
+        .mint-celebration.max-mint .celebration-id { color: #ffd700; }
+        .mint-celebration.max-mint .celebration-counter {
+            color: #ffd700;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: confettiFall 2s ease-out infinite;
+            display: none;
+        }
+
+        .mint-celebration.max-mint .confetti { display: block; }
+
+        @keyframes confettiFall {
+            0% { top: -10px; opacity: 1; transform: rotate(0deg); }
+            100% { top: 100%; opacity: 0; transform: rotate(720deg); }
+        }
+
+        /* Max Inscribe Intro Screen */
+        .max-mint-intro {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #1a0a30 0%, #0a0015 100%);
+            z-index: 3003;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .max-mint-intro.show { display: flex; }
+
+        .max-mint-intro h1 {
+            font-size: 5rem;
+            background: linear-gradient(90deg, #ffd700, #ff6600, #ff00ff, #ffd700);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientText 2s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+
+        .max-mint-intro p {
+            font-size: 1.5rem;
+            color: #e6edf3;
+            margin-bottom: 10px;
+        }
+
+        .max-mint-intro .count-display {
+            font-size: 8rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 40px #ffd700, 0 0 80px #ff6600;
+            margin: 20px 0;
+            animation: countPulse 0.5s ease infinite alternate;
+        }
+
+        @keyframes countPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .party-btn {
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffd700, #ff6600);
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 30px;
+            animation: partyBtnPulse 0.5s ease infinite alternate;
+        }
+
+        @keyframes partyBtnPulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px #ffd700; }
+            100% { transform: scale(1.05); box-shadow: 0 0 40px #ff6600; }
+        }
+
+        /* Party Screen */
+        .party-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0015 0%, #1a0a30 50%, #0a0015 100%);
+            z-index: 3002;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .party-screen.show { display: flex; }
+
+        .party-header { text-align: center; margin-bottom: 20px; }
+
+        .party-header h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientText 2s linear infinite;
+        }
+
+        .party-counter {
+            font-size: 2rem;
+            color: #ffd700;
+            text-shadow: 0 0 20px #ffd700;
+            margin-top: 10px;
+        }
+
+        /* Party BOOM Area */
+        .party-boom-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            min-height: 280px;
+        }
+
+        .party-boom-punk {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            border: 5px solid #ffd700;
+            box-shadow: 0 0 40px #ffd700, 0 0 80px #ff6600;
+            image-rendering: pixelated;
+            animation: boomPunkAppear 0.5s ease-out;
+        }
+
+        @keyframes boomPunkAppear {
+            0% { opacity: 0; transform: scale(0) rotate(-30deg); }
+            60% { transform: scale(1.3) rotate(10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        .party-boom-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 20px #ffd700, 0 0 40px #ff6600;
+            margin-top: 10px;
+            animation: boomTextPulse 0.3s ease infinite alternate;
+        }
+
+        @keyframes boomTextPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .party-boom-id {
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px #00d4ff;
+            margin-top: 5px;
+        }
+
+        .party-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 800px;
+            padding: 15px;
+            padding-bottom: 100px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 2px solid #30363d;
+            min-height: 100px;
+            margin-bottom: 80px;
+        }
+
+        .party-punk {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            image-rendering: pixelated;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .party-punk:hover { transform: scale(1.2); z-index: 10; }
+
+        .party-punk.new-arrival {
+            animation: partyPunkAppear 0.5s ease-out forwards;
+            opacity: 0;
+            transform: scale(0) rotate(-180deg);
+        }
+
+        @keyframes partyPunkAppear {
+            0% { opacity: 0; transform: scale(0) rotate(-180deg); }
+            50% { transform: scale(1.3) rotate(10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        .party-punk-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .party-punk-id {
+            font-size: 0.8rem;
+            color: #fff;
+            margin-top: 5px;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        /* View My Collection Button (fixed at bottom) */
+        .party-done-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #000;
+            border: none;
+            font-weight: bold;
+            z-index: 3010;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.5);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .party-done-btn:hover { background: linear-gradient(135deg, #00ffff, #00d4ff); }
+
+        @keyframes explode {
+            0% { transform: scale(0); box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.8); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); box-shadow: 0 0 100px 50px rgba(0, 212, 255, 0); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #30363d;
+            margin-top: 60px;
+            color: #8b949e;
+        }
+
+        footer a { color: #00d4ff; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .logo { font-size: 2.5rem; }
+            .stats { gap: 20px; }
+            .stat { padding: 20px 30px; }
+            .mint-section h2 { font-size: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .stats { flex-direction: column; align-items: center; }
+            .mint-info { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Wallet Button -->
+    <div class="floating-wallet">
+        <button class="wallet-btn" id="connectWallet">Connect Wallet</button>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-x">X1</span>
+                <span class="logo-text">PUNKS</span>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1>INSCRIBE YOUR X1 PUNK</h1>
+            <p>The First 10,000 unique pixel punks <strong>fully inscribed on-chain</strong>.</p>
+            <p style="color: #00d4ff; font-size: 1rem; margin-top: 10px;">Image + Metadata stored 100% on-chain via Metaplex Inscription Protocol</p>
+        </section>
+
+        <section class="mint-section">
+            <h2>INSCRIBE NOW</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="totalMinted">0</div>
+                    <div class="stat-label">Inscribed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">10,000</div>
+                    <div class="stat-label">Total Supply</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="mintPrice">10 XNT</div>
+                    <div class="stat-label">Price</div>
+                </div>
+            </div>
+
+            <div class="mint-info">
+                <div class="info-box">
+                    <h3>Network</h3>
+                    <p>X1 Testnet</p>
+                </div>
+                <div class="info-box">
+                    <h3>Storage</h3>
+                    <p>On-Chain Inscription</p>
+                </div>
+                <div class="info-box max-mint-box">
+                    <h3>Max Per Inscribe</h3>
+                    <p>25</p>
+                </div>
+                <div class="info-box">
+                    <h3>Total Cost</h3>
+                    <p id="totalCost">10 XNT</p>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <button class="qty-btn" id="qtyMinus">-</button>
+                <input type="number" class="qty-input" id="qtyInput" value="1" min="1" max="25">
+                <button class="qty-btn" id="qtyPlus">+</button>
+            </div>
+
+            <button class="mint-btn" id="mintBtn" disabled>Connect Wallet to Inscribe</button>
+
+            <div class="status" id="statusMessage"></div>
+        </section>
+
+        <section class="punk-section">
+            <h2>RECENTLY INSCRIBED</h2>
+            <div class="punk-showcase" id="punkShowcase">
+                <!-- Punk images loaded dynamically -->
+            </div>
+        </section>
+
+        <footer>
+            <p style="font-size: 1.2rem; color: #e6edf3;">X1 Punks - Fully On-Chain Inscriptions on <a href="https://x1.xyz" target="_blank">X1 Blockchain</a></p>
+            <p>Metaplex Inscription Protocol | RPC: https://rpc.testnet.x1.xyz</p>
+        </footer>
+    </div>
+
+    <!-- Inscription Modal -->
+    <div class="inscription-modal" id="inscriptionModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <img class="modal-punk-image" id="modalPunkImage" src="" alt="Punk">
+            <div class="modal-title" id="modalTitle">X1 Punk #0</div>
+            <div class="on-chain-badge" id="onChainBadge" style="display: none;">✓ Fully Inscribed On-Chain</div>
+            <div class="modal-image-size" id="modalImageSize"></div>
+            <div class="attribute-grid" id="modalAttributes"></div>
+        </div>
+    </div>
+
+    <!-- Inscribing Loading Screen -->
+    <div class="inscribing-overlay" id="inscribingOverlay">
+        <div class="inscribing-content">
+            <div class="inscribing-spinner"></div>
+            <div class="inscribing-text">Inscribing all data on-chain...</div>
+            <div class="inscribing-subtext">Creating NFT + Writing image & metadata to the blockchain</div>
+            <div class="inscribing-progress" id="inscribingProgress"></div>
+        </div>
+    </div>
+
+    <!-- Max Inscribe Intro Screen -->
+    <div class="max-mint-intro" id="maxMintIntro">
+        <h1>MAX INSCRIBE!</h1>
+        <p>You're inscribing</p>
+        <div class="count-display">25</div>
+        <p>X1 Punks on-chain!</p>
+        <button class="party-btn" id="partyBtn">🎉 LET'S PARTY! 🎉</button>
+    </div>
+
+    <!-- Max Inscribe Party Screen -->
+    <div class="party-screen" id="partyScreen">
+        <div class="party-header">
+            <h1>🎉 YOUR X1 PUNKS 🎉</h1>
+            <div class="party-counter" id="partyCounter">0 / 25</div>
+        </div>
+        <div class="party-boom-area" id="partyBoomArea">
+            <img class="party-boom-punk" id="partyBoomPunk" src="" alt="Inscribed Punk">
+            <div class="party-boom-text">BOOM YOU INSCRIBED!</div>
+            <div class="party-boom-id" id="partyBoomId">X1 Punk #0</div>
+        </div>
+        <div class="party-grid" id="partyGrid"></div>
+        <button class="skip-btn party-done-btn" id="partyDoneBtn" style="display: none;">View My Collection</button>
+    </div>
+
+    <!-- Celebration Overlay (non-max) -->
+    <div class="mint-celebration" id="mintCelebration">
+        <div class="confetti" style="left: 10%; background: #ff00ff; animation-delay: 0s;"></div>
+        <div class="confetti" style="left: 20%; background: #00ffff; animation-delay: 0.2s;"></div>
+        <div class="confetti" style="left: 30%; background: #ffff00; animation-delay: 0.4s;"></div>
+        <div class="confetti" style="left: 40%; background: #ff6600; animation-delay: 0.1s;"></div>
+        <div class="confetti" style="left: 50%; background: #ff00ff; animation-delay: 0.3s;"></div>
+        <div class="confetti" style="left: 60%; background: #00ffff; animation-delay: 0.5s;"></div>
+        <div class="confetti" style="left: 70%; background: #ffff00; animation-delay: 0.15s;"></div>
+        <div class="confetti" style="left: 80%; background: #ff6600; animation-delay: 0.35s;"></div>
+        <div class="confetti" style="left: 90%; background: #ff00ff; animation-delay: 0.25s;"></div>
+        <img class="celebration-punk" id="celebrationPunk" src="" alt="Inscribed Punk">
+        <div class="celebration-text" id="celebrationText">BOOM YOU INSCRIBED!</div>
+        <div class="celebration-id" id="celebrationId">X1 Punk #0</div>
+        <div class="celebration-counter" id="celebrationCounter">1 of 1</div>
+        <button class="skip-btn" id="skipBtn">Skip All</button>
+    </div>
+
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script>
+        // Configuration
+        const CONFIG = {
+            RPC_URL: 'https://rpc.testnet.x1.xyz',
+            MINT_PRICE: 10, // XNT per punk
+            MAX_PER_MINT: 25,
+            TOTAL_SUPPLY: 10000,
+            COLLECTION_WALLET: 'G3XMBwczzpoy4iJkBz6Diw9WYo3GqASKzoUW1oHfUD5y'
+        };
+
+        // State
+        let walletConnected = false;
+        let walletPublicKey = null;
+        let quantity = 1;
+        let connection = null;
+        let allPunkIds = [];
+        let mintedData = [];
+
+        // DOM Elements
+        const connectWalletBtn = document.getElementById('connectWallet');
+        const mintBtn = document.getElementById('mintBtn');
+        const qtyInput = document.getElementById('qtyInput');
+        const qtyMinus = document.getElementById('qtyMinus');
+        const qtyPlus = document.getElementById('qtyPlus');
+        const totalCost = document.getElementById('totalCost');
+        const statusMessage = document.getElementById('statusMessage');
+        const punkShowcase = document.getElementById('punkShowcase');
+        const inscriptionModal = document.getElementById('inscriptionModal');
+        const modalClose = document.getElementById('modalClose');
+        const mintCelebration = document.getElementById('mintCelebration');
+        const celebrationPunk = document.getElementById('celebrationPunk');
+        const celebrationId = document.getElementById('celebrationId');
+        const celebrationText = document.getElementById('celebrationText');
+        const celebrationCounter = document.getElementById('celebrationCounter');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPunkShowcase();
+            initConnection();
+            setupEventListeners();
+            setupModalListeners();
+        });
+
+        // Load punk showcase
+        async function loadPunkShowcase() {
+            try {
+                const response = await fetch('/api/mints');
+                const state = await response.json();
+
+                document.getElementById('totalMinted').textContent = state.mintedCount || 0;
+
+                if (!state.mints || state.mints.length === 0) {
+                    punkShowcase.classList.add('empty');
+                    punkShowcase.innerHTML = '<div class="empty-message">No NFTs inscribed yet.<br>Be the first to inscribe!</div>';
+                    allPunkIds = [];
+                    mintedData = [];
+                    return;
+                }
+
+                punkShowcase.classList.remove('empty');
+                punkShowcase.innerHTML = '';
+
+                mintedData = [...state.mints].reverse();
+                const punkIds = mintedData.map(m => m.id);
+                allPunkIds = punkIds;
+
+                mintedData.forEach(mint => {
+                    const id = mint.id;
+                    const isOwned = walletPublicKey && mint.owner === walletPublicKey;
+
+                    const container = document.createElement('div');
+                    container.className = 'punk-item' + (isOwned ? ' owned' : '');
+
+                    const imgEl = document.createElement('img');
+                    imgEl.src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${id}.png`;
+                    imgEl.className = 'punk-img';
+                    imgEl.alt = `X1 Punk #${id}`;
+                    imgEl.title = `X1 Punk #${id}${isOwned ? ' (You own this!)' : ''} - Click for details`;
+                    imgEl.dataset.punkId = id;
+                    imgEl.onclick = () => showInscriptionDetails(id);
+                    imgEl.onerror = function() { container.style.display = 'none'; };
+
+                    container.appendChild(imgEl);
+
+                    if (isOwned) {
+                        const badge = document.createElement('div');
+                        badge.className = 'owned-badge';
+                        badge.innerHTML = '✓';
+                        badge.title = 'You own this punk!';
+                        container.appendChild(badge);
+                    }
+
+                    punkShowcase.appendChild(container);
+                });
+            } catch (err) {
+                console.error('Failed to load inscribed punks:', err);
+                punkShowcase.classList.add('empty');
+                punkShowcase.innerHTML = '<div class="empty-message">No NFTs inscribed yet.<br>Be the first to inscribe!</div>';
+                allPunkIds = [];
+                mintedData = [];
+            }
+        }
+
+        // Initialize Solana connection
+        function initConnection() {
+            try {
+                connection = new solanaWeb3.Connection(CONFIG.RPC_URL, 'confirmed');
+                console.log('Connected to X1 RPC');
+            } catch (err) {
+                console.error('Failed to connect to RPC:', err);
+                showStatus('Failed to connect to X1 network', 'error');
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            connectWalletBtn.addEventListener('click', handleWalletConnect);
+            mintBtn.addEventListener('click', handleInscribe);
+            qtyMinus.addEventListener('click', () => updateQuantity(-1));
+            qtyPlus.addEventListener('click', () => updateQuantity(1));
+            qtyInput.addEventListener('input', handleQuantityInput);
+            qtyInput.addEventListener('blur', validateQuantityInput);
+            qtyInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') { validateQuantityInput(); qtyInput.blur(); }
+            });
+        }
+
+        function handleQuantityInput() {
+            let val = parseInt(qtyInput.value) || 0;
+            updateTotalCost(val);
+        }
+
+        function validateQuantityInput() {
+            let val = parseInt(qtyInput.value) || 1;
+            val = Math.max(1, Math.min(CONFIG.MAX_PER_MINT, val));
+            quantity = val;
+            qtyInput.value = val;
+            updateTotalCost(val);
+            if (walletConnected) {
+                mintBtn.textContent = `INSCRIBE ${quantity} PUNK${quantity > 1 ? 'S' : ''}`;
+            }
+        }
+
+        function updateTotalCost(qty) {
+            totalCost.textContent = `${(CONFIG.MINT_PRICE * qty)} XNT`;
+        }
+
+        // Wallet providers
+        function getWalletProvider() {
+            if (window.x1Wallet?.isX1Wallet) return { provider: window.x1Wallet, name: 'X1 Wallet' };
+            if (window.x1?.isX1Wallet) return { provider: window.x1, name: 'X1 Wallet' };
+            if (window.backpack?.solana) return { provider: window.backpack.solana, name: 'Backpack' };
+            if (window.xnft?.solana) return { provider: window.xnft.solana, name: 'Backpack' };
+            if (window.solflare?.isSolflare) return { provider: window.solflare, name: 'Solflare' };
+            if (window.phantom?.solana) return { provider: window.phantom.solana, name: 'Phantom' };
+            if (window.solana) return { provider: window.solana, name: 'Solana Wallet' };
+            return null;
+        }
+
+        // Wallet connection
+        async function handleWalletConnect() {
+            try {
+                const wallet = getWalletProvider();
+                if (!wallet) {
+                    showStatus('Please install X1 Wallet, Phantom, Backpack, or Solflare', 'error');
+                    window.open('https://chromewebstore.google.com/detail/kcfmcpdmlchhbikbogddmgopmjbflnae', '_blank');
+                    return;
+                }
+
+                showStatus(`Connecting to ${wallet.name}...`, 'loading');
+                const resp = await wallet.provider.connect();
+                walletPublicKey = resp.publicKey.toString();
+                walletConnected = true;
+
+                connectWalletBtn.textContent = `${walletPublicKey.slice(0, 4)}...${walletPublicKey.slice(-4)}`;
+                connectWalletBtn.classList.add('connected');
+                mintBtn.disabled = false;
+                mintBtn.textContent = `INSCRIBE ${quantity} PUNK${quantity > 1 ? 'S' : ''}`;
+
+                showStatus(`Connected via ${wallet.name}: ${walletPublicKey}`, 'success');
+                checkBalance();
+                await loadPunkShowcase();
+            } catch (err) {
+                console.error('Wallet connection error:', err);
+                showStatus('Failed to connect wallet: ' + err.message, 'error');
+            }
+        }
+
+        async function checkBalance() {
+            try {
+                const pubKey = new solanaWeb3.PublicKey(walletPublicKey);
+                const balance = await connection.getBalance(pubKey);
+                console.log(`Balance: ${balance / solanaWeb3.LAMPORTS_PER_SOL} XNT`);
+            } catch (err) {
+                console.error('Failed to check balance:', err);
+            }
+        }
+
+        function updateQuantity(delta) {
+            const newQty = quantity + delta;
+            if (newQty >= 1 && newQty <= CONFIG.MAX_PER_MINT) {
+                quantity = newQty;
+                qtyInput.value = quantity;
+                totalCost.textContent = `${(CONFIG.MINT_PRICE * quantity)} XNT`;
+                if (walletConnected) {
+                    mintBtn.textContent = `INSCRIBE ${quantity} PUNK${quantity > 1 ? 'S' : ''}`;
+                }
+            }
+        }
+
+        // X1 Wallet Fast Mode
+        function isX1FastModeEnabled() {
+            try {
+                return localStorage.getItem('x1wallet_skipSimulation') === 'true';
+            } catch (e) { return false; }
+        }
+
+        // Handle inscription
+        async function handleInscribe() {
+            if (!walletConnected) {
+                showStatus('Please connect your wallet first', 'error');
+                return;
+            }
+
+            try {
+                const fastMode = isX1FastModeEnabled();
+                showStatus(fastMode ? 'Preparing transaction (Fast Mode)...' : 'Preparing transaction...', 'loading');
+                mintBtn.disabled = true;
+
+                const wallet = getWalletProvider();
+                const provider = wallet.provider;
+                const totalLamports = CONFIG.MINT_PRICE * quantity * solanaWeb3.LAMPORTS_PER_SOL;
+
+                // Step 1: User pays inscription cost to collection wallet
+                const transaction = new solanaWeb3.Transaction().add(
+                    solanaWeb3.SystemProgram.transfer({
+                        fromPubkey: new solanaWeb3.PublicKey(walletPublicKey),
+                        toPubkey: new solanaWeb3.PublicKey(CONFIG.COLLECTION_WALLET),
+                        lamports: totalLamports
+                    })
+                );
+
+                const { blockhash } = await connection.getLatestBlockhash();
+                transaction.recentBlockhash = blockhash;
+                transaction.feePayer = new solanaWeb3.PublicKey(walletPublicKey);
+
+                showStatus('Please approve the transaction in your wallet...', 'loading');
+                const signed = await provider.signTransaction(transaction);
+
+                const sendOptions = fastMode ? { skipPreflight: true } : {};
+                const signature = await connection.sendRawTransaction(signed.serialize(), sendOptions);
+
+                if (fastMode) {
+                    showStatus('Transaction sent (Fast Mode)! Inscribing on-chain...', 'loading');
+                    connection.confirmTransaction(signature, 'confirmed').catch(console.log);
+                } else {
+                    showStatus('Transaction sent! Confirming...', 'loading');
+                    await connection.confirmTransaction(signature, 'confirmed');
+                }
+
+                // Step 2: Show inscribing overlay
+                const inscribingOverlay = document.getElementById('inscribingOverlay');
+                inscribingOverlay.classList.add('show');
+                showStatus('Inscribing NFT + image + metadata on-chain... This may take a moment.', 'loading');
+
+                // Step 3: Server creates NFT, writes inscription data on-chain
+                const inscribeResponse = await fetch('/api/inscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        wallet: walletPublicKey,
+                        quantity: quantity,
+                        txSignature: signature
+                    })
+                });
+
+                const result = await inscribeResponse.json();
+                inscribingOverlay.classList.remove('show');
+
+                if (result.success) {
+                    await showMintCelebration(result.minted);
+                    const ids = result.minted.map(n => `#${n.id}`).join(', ');
+                    const msg = result.partial
+                        ? `Inscribed ${result.completed}/${result.requested} X1 Punks: ${ids}`
+                        : `Successfully inscribed ${quantity} X1 Punk${quantity > 1 ? 's' : ''}: ${ids}! TX: ${signature.slice(0, 8)}...`;
+                    showStatus(msg, 'success');
+                } else {
+                    showStatus(`Inscription failed: ${result.error}`, 'error');
+                }
+
+                await loadPunkShowcase();
+
+            } catch (err) {
+                console.error('Inscribe error:', err);
+                showStatus('Inscription failed: ' + err.message, 'error');
+            } finally {
+                document.getElementById('inscribingOverlay').classList.remove('show');
+                mintBtn.disabled = false;
+            }
+        }
+
+        // Show status message
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `status show ${type}`;
+        }
+
+        // Disconnect listener
+        function setupDisconnectListener() {
+            const wallet = getWalletProvider();
+            if (wallet?.provider?.on) {
+                wallet.provider.on('disconnect', async () => {
+                    walletConnected = false;
+                    walletPublicKey = null;
+                    connectWalletBtn.textContent = 'Connect Wallet';
+                    connectWalletBtn.classList.remove('connected');
+                    mintBtn.disabled = true;
+                    mintBtn.textContent = 'Connect Wallet to Inscribe';
+                    await loadPunkShowcase();
+                });
+            }
+        }
+        setupDisconnectListener();
+
+        // Modal
+        function setupModalListeners() {
+            modalClose.onclick = closeModal;
+            inscriptionModal.onclick = (e) => { if (e.target === inscriptionModal) closeModal(); };
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+        }
+
+        function closeModal() { inscriptionModal.classList.remove('show'); }
+
+        async function showInscriptionDetails(punkId) {
+            try {
+                inscriptionModal.classList.add('show');
+                document.getElementById('modalTitle').textContent = `X1 Punk #${punkId}`;
+                document.getElementById('modalPunkImage').src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${punkId}.png`;
+                document.getElementById('modalAttributes').innerHTML = '<p style="color: #8b949e;">Loading inscription data...</p>';
+                document.getElementById('modalImageSize').textContent = '';
+                document.getElementById('onChainBadge').style.display = 'none';
+
+                const response = await fetch(`/api/inscription/${punkId}`);
+                const data = await response.json();
+
+                if (data.metadata) {
+                    const attributesHtml = data.metadata.attributes.map(attr => `
+                        <div class="attribute-box">
+                            <div class="attribute-label">${attr.trait_type}</div>
+                            <div class="attribute-value">${attr.value}</div>
+                        </div>
+                    `).join('');
+                    document.getElementById('modalAttributes').innerHTML = attributesHtml;
+                    document.getElementById('modalImageSize').textContent = `Image Size: ${data.imageSize} bytes | Protocol: Metaplex Inscription`;
+
+                    if (data.inscribed) {
+                        document.getElementById('onChainBadge').style.display = 'block';
+                        if (data.onChain) {
+                            document.getElementById('onChainBadge').innerHTML = `✓ Fully Inscribed On-Chain<br><small>Mint: ${data.onChain.mintAddress?.slice(0,8)}...<br>JSON: ${data.onChain.jsonAccount?.slice(0,8)}... (${data.onChain.jsonSize}B)<br>Image: ${data.onChain.imageAccount?.slice(0,8)}... (${data.onChain.imageSize}B)</small>`;
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to load inscription details:', err);
+                document.getElementById('modalAttributes').innerHTML = '<p style="color: #f85149;">Failed to load data</p>';
+            }
+        }
+
+        // ---- Celebration System ----
+        const maxMintIntro = document.getElementById('maxMintIntro');
+        const partyScreen = document.getElementById('partyScreen');
+        const partyGrid = document.getElementById('partyGrid');
+        const partyCounter = document.getElementById('partyCounter');
+        const partyBoomArea = document.getElementById('partyBoomArea');
+        const partyBoomPunk = document.getElementById('partyBoomPunk');
+        const partyBoomId = document.getElementById('partyBoomId');
+        const partyDoneBtn = document.getElementById('partyDoneBtn');
+        let skipCelebration = false;
+        let partyMintedNfts = [];
+
+        document.getElementById('skipBtn').addEventListener('click', () => { skipCelebration = true; });
+        document.getElementById('partyBtn').addEventListener('click', () => {
+            maxMintIntro.classList.remove('show');
+            showPartyScreen(partyMintedNfts);
+        });
+
+        partyDoneBtn.addEventListener('click', () => {
+            partyScreen.classList.remove('show');
+            partyDoneBtn.style.display = 'none';
+        });
+
+        async function showPartyScreen(mintedNfts) {
+            partyGrid.innerHTML = '';
+            partyCounter.textContent = `0 / ${mintedNfts.length}`;
+            partyScreen.classList.add('show');
+            partyDoneBtn.style.display = 'none';
+
+            for (let i = 0; i < mintedNfts.length; i++) {
+                if (!partyScreen.classList.contains('show')) break;
+
+                const nft = mintedNfts[i];
+
+                // Show large BOOM punk
+                partyBoomPunk.src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${nft.id}.png`;
+                partyBoomId.textContent = `X1 Punk #${nft.id}`;
+                partyBoomArea.style.display = 'flex';
+
+                // Add to grid
+                const container = document.createElement('div');
+                container.className = 'party-punk-container';
+
+                const img = document.createElement('img');
+                img.src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${nft.id}.png`;
+                img.className = 'party-punk new-arrival';
+                img.onclick = () => showInscriptionDetails(nft.id);
+
+                const idLabel = document.createElement('div');
+                idLabel.className = 'party-punk-id';
+                idLabel.textContent = `#${nft.id}`;
+
+                container.appendChild(img);
+                container.appendChild(idLabel);
+                partyGrid.appendChild(container);
+
+                partyCounter.textContent = `${i + 1} / ${mintedNfts.length}`;
+
+                // Wait 0.5 seconds before next punk
+                await new Promise(resolve => setTimeout(resolve, 500));
+            }
+
+            partyBoomArea.style.display = 'none';
+            partyDoneBtn.style.display = 'block';
+        }
+
+        async function showMintCelebration(mintedNfts) {
+            skipCelebration = false;
+            const isMaxMint = mintedNfts.length >= 25;
+
+            // Max inscribe special intro with party button
+            if (isMaxMint) {
+                partyMintedNfts = mintedNfts;
+                maxMintIntro.classList.add('show');
+                return new Promise((resolve) => {
+                    const checkInterval = setInterval(() => {
+                        if (maxMintIntro.classList.contains('show')) {
+                            // Still showing intro, user hasn't clicked party yet
+                        } else if (partyScreen.classList.contains('show')) {
+                            // Party screen is showing, wait for it to close
+                        } else {
+                            clearInterval(checkInterval);
+                            resolve();
+                        }
+
+                        if (!partyScreen.classList.contains('show') && !maxMintIntro.classList.contains('show')) {
+                            clearInterval(checkInterval);
+                            resolve();
+                        }
+                    }, 500);
+                });
+            }
+
+            // Regular celebration for non-max inscriptions
+            for (let i = 0; i < mintedNfts.length; i++) {
+                if (skipCelebration) break;
+
+                const nft = mintedNfts[i];
+                celebrationPunk.src = `https://raw.githubusercontent.com/Execute007/x1punks-images/master/generated/punk_${nft.id}.png`;
+                celebrationId.textContent = `X1 Punk #${nft.id}`;
+                celebrationText.textContent = 'BOOM YOU INSCRIBED!';
+                celebrationCounter.textContent = `${i + 1} of ${mintedNfts.length}`;
+
+                // Rarity colors
+                mintCelebration.className = 'mint-celebration';
+                const rarity = nft.inscription?.attributes?.find(a => a.trait_type === 'Rarity')?.value;
+                if (rarity === 'Legendary') mintCelebration.classList.add('celebration-legendary');
+                else if (rarity === 'Epic') mintCelebration.classList.add('celebration-epic');
+                else if (rarity === 'Rare') mintCelebration.classList.add('celebration-rare');
+                else mintCelebration.classList.add('celebration-common');
+
+                mintCelebration.classList.add('show');
+                const waitTime = 1500;
+                await new Promise(resolve => setTimeout(resolve, waitTime));
+
+                if (i < mintedNfts.length - 1 && !skipCelebration) {
+                    mintCelebration.classList.remove('show');
+                    await new Promise(resolve => setTimeout(resolve, 300));
+                }
+            }
+
+            mintCelebration.classList.remove('show');
+            mintCelebration.className = 'mint-celebration';
+        }
+
+        // Click celebration to dismiss
+        mintCelebration.addEventListener('click', (e) => {
+            if (e.target === mintCelebration) {
+                mintCelebration.classList.remove('show');
+                mintCelebration.className = 'mint-celebration';
+                maxMintIntro.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

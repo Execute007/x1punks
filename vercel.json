@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/**/*.js": {
+      "includeFiles": "mint-state.json,inscriptions-index.json,punks.whitelabel/**"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/inscription/:id", "destination": "/api/inscription/[id]" }
+  ]
+}
