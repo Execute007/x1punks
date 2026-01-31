@@ -1833,15 +1833,15 @@
                 const ASSOCIATED_TOKEN_PROGRAM_ID = new solanaWeb3.PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
 
                 let transferred = 0;
-                const batchSize = 3; // transactions per batch
 
-                for (let i = 0; i < myCollection.length; i += batchSize) {
-                    const batch = myCollection.slice(i, i + batchSize);
-                    showSendStatus(`Transferring punks ${i + 1}-${Math.min(i + batchSize, myCollection.length)} of ${myCollection.length}...`, 'loading');
+                // Send 1 punk per transaction for reliability
+                // (each needs ATA create + transfer = 2 instructions)
+                for (let i = 0; i < myCollection.length; i++) {
+                    const punk = myCollection[i];
+                    showSendStatus(`Transferring punk #${punk.id} (${i + 1}/${myCollection.length})...`, 'loading');
 
-                    const transaction = new solanaWeb3.Transaction();
-
-                    for (const punk of batch) {
+                    try {
+                        const transaction = new solanaWeb3.Transaction();
                         const mintPubKey = new solanaWeb3.PublicKey(punk.mintAddress);
 
                         // Get source token account (ATA)
@@ -1870,19 +1870,34 @@
                                 1            // amount (1 for NFT)
                             )
                         );
+
+                        transaction.feePayer = fromPubKey;
+                        const { blockhash } = await connection.getLatestBlockhash();
+                        transaction.recentBlockhash = blockhash;
+
+                        const signed = await provider.signTransaction(transaction);
+                        const txId = await connection.sendRawTransaction(signed.serialize());
+                        await connection.confirmTransaction(txId, 'confirmed');
+
+                        txSignatures.push(txId);
+                        transferred++;
+                        showSendStatus(`Transferred ${transferred}/${myCollection.length} punks...`, 'loading');
+                    } catch (txErr) {
+                        console.error(`Failed to transfer punk #${punk.id}:`, txErr);
+                        showSendStatus(`Failed on punk #${punk.id} (${transferred}/${myCollection.length} done): ${txErr.message}`, 'error');
+                        sendConfirmBtn.disabled = false;
+                        // Still update ownership for the ones that succeeded
+                        if (transferred > 0) {
+                            const successIds = myCollection.slice(0, transferred).map(p => p.id);
+                            await fetch(`${CONFIG.INSCRIBE_SERVER}/api/update-ownership`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ punkIds: successIds, newOwner: destAddress, txSignatures })
+                            });
+                            setTimeout(() => { loadMyCollection(); loadPunkShowcase(); }, 2000);
+                        }
+                        return;
                     }
-
-                    transaction.feePayer = fromPubKey;
-                    const { blockhash } = await connection.getLatestBlockhash();
-                    transaction.recentBlockhash = blockhash;
-
-                    const signed = await provider.signTransaction(transaction);
-                    const txId = await connection.sendRawTransaction(signed.serialize());
-                    await connection.confirmTransaction(txId, 'confirmed');
-
-                    txSignatures.push(txId);
-                    transferred += batch.length;
-                    showSendStatus(`Transferred ${transferred}/${myCollection.length} punks...`, 'loading');
                 }
 
                 // Update server ownership records
