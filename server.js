@@ -466,6 +466,96 @@ const server = http.createServer((req, res) => {
         return;
     }
 
+    // ---- GET /api/collection/:wallet ----
+    // Returns all punks owned by a specific wallet
+    if (req.url.startsWith('/api/collection/') && req.method === 'GET') {
+        const wallet = req.url.split('/api/collection/')[1];
+        if (!wallet || wallet.length < 32) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Invalid wallet address' }));
+            return;
+        }
+
+        const state = getMintState();
+        const ownedPunks = (state.mints || [])
+            .filter(m => m.owner === wallet)
+            .map(m => ({
+                id: m.id,
+                name: `X1 Punk #${m.id}`,
+                imageUrl: getArweaveImageUrl(m.id),
+                mintAddress: m.mintAddress,
+                txSignature: m.txSignature,
+                mintedAt: m.mintedAt
+            }));
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            wallet,
+            punks: ownedPunks,
+            total: ownedPunks.length
+        }));
+        return;
+    }
+
+    // ---- POST /api/update-ownership ----
+    // Updates ownership records after client-side transfers
+    if (req.url === '/api/update-ownership' && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', () => {
+            try {
+                const { punkIds, newOwner, txSignatures } = JSON.parse(body);
+
+                if (!punkIds || !Array.isArray(punkIds) || !newOwner || !txSignatures) {
+                    res.writeHead(400, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ error: 'Missing required fields: punkIds, newOwner, txSignatures' }));
+                    return;
+                }
+
+                const state = getMintState();
+                let updated = 0;
+
+                for (const punkId of punkIds) {
+                    const mint = state.mints.find(m => m.id === punkId);
+                    if (mint) {
+                        mint.owner = newOwner;
+                        mint.lastTransferAt = new Date().toISOString();
+                        updated++;
+                    }
+                }
+
+                // Save updated state
+                saveMintState(state);
+
+                // Also update inscriptions-index.json
+                const index = getInscriptionsIndex();
+                if (index.inscriptions) {
+                    for (const punkId of punkIds) {
+                        const inscription = index.inscriptions.find(i => i.id === punkId);
+                        if (inscription) {
+                            inscription.owner = newOwner;
+                        }
+                    }
+                    fs.writeFileSync(INSCRIPTIONS_INDEX_FILE, JSON.stringify(index, null, 2));
+                }
+
+                console.log(`[${PROGRAM_NAME}] Ownership updated: ${updated} punks → ${newOwner.slice(0,8)}...`);
+
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({
+                    success: true,
+                    updated,
+                    newOwner
+                }));
+            } catch (e) {
+                console.error(`[${PROGRAM_NAME}] Update ownership error:`, e);
+                res.writeHead(500, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ error: 'Failed to update ownership: ' + e.message }));
+            }
+        });
+        return;
+    }
+
     // ---- GET /api/inscriptions ----
     if (req.url === '/api/inscriptions' && req.method === 'GET') {
         const index = getInscriptionsIndex();

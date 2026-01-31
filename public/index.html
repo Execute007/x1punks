@@ -312,6 +312,196 @@
             font-weight: bold;
         }
 
+        /* MY COLLECTION Section */
+        .collection-section {
+            margin: 60px 0;
+        }
+
+        .collection-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .collection-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 0 10px;
+        }
+
+        #collectionCount {
+            font-size: 1.1rem;
+            color: #8b949e;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+            gap: 8px;
+            padding: 30px;
+            background: rgba(13, 17, 23, 0.8);
+            border: 1px solid #ffd700;
+            border-radius: 16px;
+            min-height: 120px;
+        }
+
+        .collection-grid.empty {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Send All Button */
+        .send-all-btn {
+            background: linear-gradient(135deg, #ff6b35 0%, #d63031 100%);
+            border: none;
+            color: #fff;
+            padding: 12px 30px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .send-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
+        }
+
+        .send-all-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Send Modal */
+        .send-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .send-modal.show { display: flex; }
+
+        .send-modal-content {
+            background: #161b22;
+            border: 1px solid #ff6b35;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .send-modal-title {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .send-modal-count {
+            text-align: center;
+            color: #8b949e;
+            margin-bottom: 20px;
+        }
+
+        .send-address-input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #30363d;
+            background: #0d1117;
+            color: #e6edf3;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .send-address-input:focus {
+            border-color: #ff6b35;
+        }
+
+        .send-modal-warning {
+            color: #f85149;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(248, 81, 73, 0.1);
+            border-radius: 8px;
+        }
+
+        .send-modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .send-cancel-btn {
+            padding: 12px 30px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .send-cancel-btn:hover { background: #30363d; }
+
+        .send-confirm-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ff6b35 0%, #d63031 100%);
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .send-confirm-btn:hover {
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .send-confirm-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .send-status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .send-status.show { display: block; }
+        .send-status.loading { background: rgba(0, 212, 255, 0.1); border: 1px solid #00d4ff; color: #00d4ff; }
+        .send-status.success { background: rgba(35, 134, 54, 0.2); border: 1px solid #238636; color: #3fb950; }
+        .send-status.error { background: rgba(248, 81, 73, 0.2); border: 1px solid #f85149; color: #f85149; }
+
         /* Inscription Modal */
         .inscription-modal {
             display: none;
@@ -910,6 +1100,34 @@
             </div>
         </section>
 
+        <!-- MY COLLECTION Section -->
+        <section class="collection-section" id="collectionSection" style="display: none;">
+            <h2>MY COLLECTION</h2>
+            <div class="collection-info" id="collectionInfo">
+                <span id="collectionCount">0 Punks</span>
+                <button class="send-all-btn" id="sendAllBtn" style="display: none;">SEND ALL</button>
+            </div>
+            <div class="collection-grid" id="collectionGrid">
+                <div class="empty-message">Connect wallet to view your collection</div>
+            </div>
+        </section>
+
+        <!-- Send All Modal -->
+        <div class="send-modal" id="sendModal">
+            <div class="send-modal-content">
+                <button class="modal-close" id="sendModalClose">&times;</button>
+                <h3 class="send-modal-title">Send All Punks</h3>
+                <p class="send-modal-count" id="sendModalCount">Sending 0 punks to:</p>
+                <input type="text" class="send-address-input" id="sendAddressInput" placeholder="Destination wallet address...">
+                <div class="send-modal-warning">This will transfer all your punks to the destination wallet. This action cannot be undone.</div>
+                <div class="send-modal-buttons">
+                    <button class="send-cancel-btn" id="sendCancelBtn">Cancel</button>
+                    <button class="send-confirm-btn" id="sendConfirmBtn">Confirm Send</button>
+                </div>
+                <div class="send-status" id="sendStatus"></div>
+            </div>
+        </div>
+
         <footer>
             <p style="font-size: 1.2rem; color: #e6edf3;">X1 Punks - Fully On-Chain Inscriptions on <a href="https://x1.xyz" target="_blank">X1 Blockchain</a></p>
             <p>Metaplex Inscription Protocol | RPC: https://rpc.testnet.x1.xyz</p>
@@ -990,7 +1208,7 @@
             MAX_PER_MINT: 10,
             TOTAL_SUPPLY: 10000,
             COLLECTION_WALLET: 'AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B',
-            INSCRIBE_SERVER: 'https://bend-retrieved-sip-feel.trycloudflare.com'
+            INSCRIBE_SERVER: 'https://passion-metres-doll-compound.trycloudflare.com'
         };
 
         // State
@@ -1000,6 +1218,7 @@
         let connection = null;
         let allPunkIds = [];
         let mintedData = [];
+        let myCollection = [];
 
         // DOM Elements
         const connectWalletBtn = document.getElementById('connectWallet');
@@ -1166,6 +1385,7 @@
                 showStatus(`Connected via ${wallet.name}: ${walletPublicKey}`, 'success');
                 checkBalance();
                 await loadPunkShowcase();
+                await loadMyCollection();
             } catch (err) {
                 console.error('Wallet connection error:', err);
                 showStatus('Failed to connect wallet: ' + err.message, 'error');
@@ -1277,6 +1497,7 @@
                 }
 
                 await loadPunkShowcase();
+                await loadMyCollection();
 
             } catch (err) {
                 console.error('Inscribe error:', err);
@@ -1500,6 +1721,253 @@
                 maxMintIntro.classList.remove('show');
             }
         });
+
+        // ============================================
+        // MY COLLECTION
+        // ============================================
+
+        const collectionSection = document.getElementById('collectionSection');
+        const collectionGrid = document.getElementById('collectionGrid');
+        const collectionCount = document.getElementById('collectionCount');
+        const sendAllBtn = document.getElementById('sendAllBtn');
+        const sendModal = document.getElementById('sendModal');
+        const sendModalClose = document.getElementById('sendModalClose');
+        const sendModalCount = document.getElementById('sendModalCount');
+        const sendAddressInput = document.getElementById('sendAddressInput');
+        const sendConfirmBtn = document.getElementById('sendConfirmBtn');
+        const sendCancelBtn = document.getElementById('sendCancelBtn');
+        const sendStatus = document.getElementById('sendStatus');
+
+        async function loadMyCollection() {
+            if (!walletConnected || !walletPublicKey) {
+                collectionSection.style.display = 'none';
+                return;
+            }
+
+            collectionSection.style.display = 'block';
+
+            try {
+                const response = await fetch(`${CONFIG.INSCRIBE_SERVER}/api/collection/${walletPublicKey}`);
+                const data = await response.json();
+
+                myCollection = data.punks || [];
+                collectionCount.textContent = `${myCollection.length} Punk${myCollection.length !== 1 ? 's' : ''}`;
+
+                if (myCollection.length === 0) {
+                    collectionGrid.classList.add('empty');
+                    collectionGrid.innerHTML = '<div class="empty-message">No punks yet — inscribe your first!</div>';
+                    sendAllBtn.style.display = 'none';
+                    return;
+                }
+
+                collectionGrid.classList.remove('empty');
+                sendAllBtn.style.display = 'inline-block';
+
+                collectionGrid.innerHTML = myCollection.map(punk => `
+                    <div class="punk-item owned" onclick="showInscriptionDetails(${punk.id})">
+                        <img class="punk-img" src="${punk.imageUrl}" alt="X1 Punk #${punk.id}" loading="lazy">
+                        <div class="owned-badge">★</div>
+                    </div>
+                `).join('');
+
+            } catch (err) {
+                console.error('Failed to load collection:', err);
+                collectionGrid.classList.add('empty');
+                collectionGrid.innerHTML = '<div class="empty-message">Failed to load collection</div>';
+            }
+        }
+
+        // Send All Modal
+        sendAllBtn.addEventListener('click', () => {
+            if (myCollection.length === 0) return;
+            sendModalCount.textContent = `Sending ${myCollection.length} punk${myCollection.length !== 1 ? 's' : ''} to:`;
+            sendAddressInput.value = '';
+            sendStatus.className = 'send-status';
+            sendStatus.textContent = '';
+            sendConfirmBtn.disabled = false;
+            sendModal.classList.add('show');
+        });
+
+        sendCancelBtn.addEventListener('click', () => {
+            sendModal.classList.remove('show');
+        });
+
+        sendModalClose.addEventListener('click', () => {
+            sendModal.classList.remove('show');
+        });
+
+        sendModal.addEventListener('click', (e) => {
+            if (e.target === sendModal) sendModal.classList.remove('show');
+        });
+
+        function showSendStatus(msg, type) {
+            sendStatus.textContent = msg;
+            sendStatus.className = `send-status show ${type}`;
+        }
+
+        sendConfirmBtn.addEventListener('click', async () => {
+            const destAddress = sendAddressInput.value.trim();
+            if (!destAddress || destAddress.length < 32) {
+                showSendStatus('Please enter a valid wallet address', 'error');
+                return;
+            }
+
+            if (destAddress === walletPublicKey) {
+                showSendStatus('Cannot send to your own wallet', 'error');
+                return;
+            }
+
+            try {
+                sendConfirmBtn.disabled = true;
+                showSendStatus('Preparing transfers...', 'loading');
+
+                const wallet = getWalletProvider();
+                const provider = wallet.provider;
+                const fromPubKey = new solanaWeb3.PublicKey(walletPublicKey);
+                const toPubKey = new solanaWeb3.PublicKey(destAddress);
+                const txSignatures = [];
+
+                // Build and send transfer transactions for each NFT
+                // We batch them into a single transaction where possible
+                const TOKEN_PROGRAM_ID = new solanaWeb3.PublicKey('TokenkegQEqKXcP1DE2yg111111111111111111111');
+                const ASSOCIATED_TOKEN_PROGRAM_ID = new solanaWeb3.PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
+
+                let transferred = 0;
+                const batchSize = 3; // transactions per batch
+
+                for (let i = 0; i < myCollection.length; i += batchSize) {
+                    const batch = myCollection.slice(i, i + batchSize);
+                    showSendStatus(`Transferring punks ${i + 1}-${Math.min(i + batchSize, myCollection.length)} of ${myCollection.length}...`, 'loading');
+
+                    const transaction = new solanaWeb3.Transaction();
+
+                    for (const punk of batch) {
+                        const mintPubKey = new solanaWeb3.PublicKey(punk.mintAddress);
+
+                        // Get source token account (ATA)
+                        const fromAta = await getAssociatedTokenAddress(mintPubKey, fromPubKey);
+                        const toAta = await getAssociatedTokenAddress(mintPubKey, toPubKey);
+
+                        // Create ATA for destination if needed
+                        const toAtaInfo = await connection.getAccountInfo(toAta);
+                        if (!toAtaInfo) {
+                            transaction.add(
+                                createAssociatedTokenAccountInstruction(
+                                    fromPubKey, // payer
+                                    toAta,       // ata
+                                    toPubKey,    // owner
+                                    mintPubKey   // mint
+                                )
+                            );
+                        }
+
+                        // Transfer 1 token (NFT)
+                        transaction.add(
+                            createTransferInstruction(
+                                fromAta,     // source
+                                toAta,       // destination
+                                fromPubKey,  // owner
+                                1            // amount (1 for NFT)
+                            )
+                        );
+                    }
+
+                    transaction.feePayer = fromPubKey;
+                    const { blockhash } = await connection.getLatestBlockhash();
+                    transaction.recentBlockhash = blockhash;
+
+                    const signed = await provider.signTransaction(transaction);
+                    const txId = await connection.sendRawTransaction(signed.serialize());
+                    await connection.confirmTransaction(txId, 'confirmed');
+
+                    txSignatures.push(txId);
+                    transferred += batch.length;
+                    showSendStatus(`Transferred ${transferred}/${myCollection.length} punks...`, 'loading');
+                }
+
+                // Update server ownership records
+                showSendStatus('Updating ownership records...', 'loading');
+                const punkIds = myCollection.map(p => p.id);
+                await fetch(`${CONFIG.INSCRIBE_SERVER}/api/update-ownership`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        punkIds,
+                        newOwner: destAddress,
+                        txSignatures
+                    })
+                });
+
+                showSendStatus(`Successfully sent ${myCollection.length} punks to ${destAddress.slice(0,4)}...${destAddress.slice(-4)}!`, 'success');
+
+                // Refresh collection after a delay
+                setTimeout(() => {
+                    sendModal.classList.remove('show');
+                    loadMyCollection();
+                    loadPunkShowcase();
+                }, 2000);
+
+            } catch (err) {
+                console.error('Send all error:', err);
+                showSendStatus('Transfer failed: ' + (err.message || err), 'error');
+                sendConfirmBtn.disabled = false;
+            }
+        });
+
+        // SPL Token helper functions (inline to avoid extra dependencies)
+        async function getAssociatedTokenAddress(mint, owner) {
+            const TOKEN_PROGRAM_ID = new solanaWeb3.PublicKey('TokenkegQEqKXcP1DE2yg111111111111111111111');
+            const ASSOCIATED_TOKEN_PROGRAM_ID = new solanaWeb3.PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
+
+            const [address] = await solanaWeb3.PublicKey.findProgramAddress(
+                [owner.toBuffer(), TOKEN_PROGRAM_ID.toBuffer(), mint.toBuffer()],
+                ASSOCIATED_TOKEN_PROGRAM_ID
+            );
+            return address;
+        }
+
+        function createAssociatedTokenAccountInstruction(payer, ata, owner, mint) {
+            const TOKEN_PROGRAM_ID = new solanaWeb3.PublicKey('TokenkegQEqKXcP1DE2yg111111111111111111111');
+            const ASSOCIATED_TOKEN_PROGRAM_ID = new solanaWeb3.PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
+            const SYSTEM_PROGRAM_ID = new solanaWeb3.PublicKey('11111111111111111111111111111111');
+            const SYSVAR_RENT_ID = new solanaWeb3.PublicKey('SysvarRent111111111111111111111111111111111');
+
+            return new solanaWeb3.TransactionInstruction({
+                keys: [
+                    { pubkey: payer, isSigner: true, isWritable: true },
+                    { pubkey: ata, isSigner: false, isWritable: true },
+                    { pubkey: owner, isSigner: false, isWritable: false },
+                    { pubkey: mint, isSigner: false, isWritable: false },
+                    { pubkey: SYSTEM_PROGRAM_ID, isSigner: false, isWritable: false },
+                    { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+                    { pubkey: SYSVAR_RENT_ID, isSigner: false, isWritable: false },
+                ],
+                programId: ASSOCIATED_TOKEN_PROGRAM_ID,
+                data: Buffer.from([]),
+            });
+        }
+
+        function createTransferInstruction(source, destination, owner, amount) {
+            const TOKEN_PROGRAM_ID = new solanaWeb3.PublicKey('TokenkegQEqKXcP1DE2yg111111111111111111111');
+
+            const data = Buffer.alloc(9);
+            data[0] = 3; // Transfer instruction index
+            // Write amount as u64 LE
+            const bn = BigInt(amount);
+            for (let i = 0; i < 8; i++) {
+                data[1 + i] = Number((bn >> BigInt(i * 8)) & BigInt(0xff));
+            }
+
+            return new solanaWeb3.TransactionInstruction({
+                keys: [
+                    { pubkey: source, isSigner: false, isWritable: true },
+                    { pubkey: destination, isSigner: false, isWritable: true },
+                    { pubkey: owner, isSigner: true, isWritable: false },
+                ],
+                programId: TOKEN_PROGRAM_ID,
+                data,
+            });
+        }
     </script>
 </body>
 </html>

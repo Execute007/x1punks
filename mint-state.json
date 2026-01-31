@@ -1,5 +1,5 @@
 {
-  "mintedCount": 148,
+  "mintedCount": 150,
   "mints": [
     {
       "id": 942,
@@ -2220,6 +2220,38 @@
         "imageSize": 7533,
         "imageHash": "8bdae5d54781c559b904d035a1e6932f52b5f2189522d2b2b4390227083a849e"
       }
+    },
+    {
+      "id": 8033,
+      "name": "X1 Punk #8033",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "imageUrl": "https://arweave.net/O0hLUwqSOWb4mYKYVih7BRSl-SDDPerzInIJ9N4pftY",
+      "txSignature": "3VFn4HphWJ2aK5S6cejtjvPABTrfDUmaZw4ASfMTSKrnZVpNqQjDBzAEe4zxDiuQuZAttgeyvVEF9uWujQWQqSpA",
+      "mintAddress": "9t23t14ZTz3Y9JesbTLk78MKLarE9V7JGuWhCPhuGs9r",
+      "inscribedAt": "2026-01-31T09:14:17.048Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 641,
+        "imageSize": 7334,
+        "imageHash": "9bef2805cdb360e9ace0eca484f4c8293b9e2e0fcefd8234aaf103fb61e0104e"
+      }
+    },
+    {
+      "id": 2012,
+      "name": "X1 Punk #2012",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "imageUrl": "https://arweave.net/Hr4wzlGHW2H6-vTGOBiRPNPHKYNY3oRli75CdNthJTc",
+      "txSignature": "5TpuqjMwRChyuC3VsKtFX2buJ86LGHj3PNAmtGoY8dLhox9jtakSsf6oLGqPXbGEmXsuuVVzMsQvhMAWf8NupSJv",
+      "mintAddress": "5EESsAmYHvnR2QU532tMiWH7uBQS5Y3Y1yKNGFcjzK3q",
+      "inscribedAt": "2026-01-31T09:14:57.502Z",
+      "onChain": true,
+      "inscription": {
+        "jsonSize": 694,
+        "imageSize": 6786,
+        "imageHash": "08340821ce2c2d1d3db83532fb613ab457b9977f4da9644174f8b39cfc4026e5"
+      }
     }
   ],
   "mintedIds": [
@@ -2370,6 +2402,8 @@
     8867,
     5000,
     4731,
-    8199
+    8199,
+    8033,
+    2012
   ]
 }

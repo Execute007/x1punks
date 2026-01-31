@@ -9070,8 +9070,128 @@
           "programId": "1NSCRfGeyo7wPUazGbaPBUsTM49e1k2aXewHGARfzSo"
         }
       }
+    },
+    {
+      "punkId": 8033,
+      "name": "X1 Punk #8033",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "inscribedAt": "2026-01-31T09:14:17.050Z",
+      "onChain": {
+        "mintAddress": "9t23t14ZTz3Y9JesbTLk78MKLarE9V7JGuWhCPhuGs9r",
+        "jsonAccount": "HZgRwWmmb6M4vSmYaqfsv3cEVbtTcarXnewva2p1C8uV",
+        "imageAccount": "AVZrvDntC427Kug3GCrhueTRtmF2FETpRoagcu4BqhCp",
+        "memoSignature": "fLDjrxUM3y8np64pmLYoFEjAPWAwhjVpM5BiVPFnF94qk8Aoaefdz9bWXDSAJE3BthCqN41X4Hvj679jhYM8BJA",
+        "jsonSize": 641,
+        "imageSize": 7334,
+        "imageHash": "9bef2805cdb360e9ace0eca484f4c8293b9e2e0fcefd8234aaf103fb61e0104e"
+      },
+      "metadata": {
+        "name": "X1 Punk #8033",
+        "symbol": "X1PUNK",
+        "description": "X1 Punk #8033 - Unique pixel punk fully inscribed on the X1 blockchain. Image and metadata stored 100% on-chain.",
+        "collection": {
+          "name": "X1 Punk",
+          "family": "X1 Punks"
+        },
+        "attributes": [
+          {
+            "trait_type": "Type",
+            "value": "Male 2"
+          },
+          {
+            "trait_type": "Rarity",
+            "value": "Common"
+          },
+          {
+            "trait_type": "Accessory 1",
+            "value": "Cap Forward"
+          },
+          {
+            "trait_type": "Accessory 2",
+            "value": "3D Glasses"
+          }
+        ],
+        "properties": {
+          "category": "image",
+          "files": [
+            {
+              "type": "image/png",
+              "uri": "inscription"
+            }
+          ]
+        },
+        "inscription": {
+          "protocol": "metaplex-inscription",
+          "version": "1.0",
+          "chain": "x1",
+          "programId": "1NSCRfGeyo7wPUazGbaPBUsTM49e1k2aXewHGARfzSo"
+        }
+      }
+    },
+    {
+      "punkId": 2012,
+      "name": "X1 Punk #2012",
+      "symbol": "X1PUNK",
+      "owner": "AKCzFidJWmD8deRfa5HTnboz4mpqP274oGKEMnkg346B",
+      "inscribedAt": "2026-01-31T09:14:57.504Z",
+      "onChain": {
+        "mintAddress": "5EESsAmYHvnR2QU532tMiWH7uBQS5Y3Y1yKNGFcjzK3q",
+        "jsonAccount": "q62g5P6ZXYjcMerQ3ajUcGggUrTkF2DBhbG8upJQNgQ",
+        "imageAccount": "6WB9abksv2xt3vhoT63G6Z2q5Db9qYgmjyPz8SugfAyx",
+        "memoSignature": "4C1kKd7oma839bwaNifmw3UKXmYxpGZY4rZMcRZ99PHXwj2MxoVAf8ecE4cNMGZ6irp28SbkbqSmbRJRp9GXC64o",
+        "jsonSize": 694,
+        "imageSize": 6786,
+        "imageHash": "08340821ce2c2d1d3db83532fb613ab457b9977f4da9644174f8b39cfc4026e5"
+      },
+      "metadata": {
+        "name": "X1 Punk #2012",
+        "symbol": "X1PUNK",
+        "description": "X1 Punk #2012 - Unique pixel punk fully inscribed on the X1 blockchain. Image and metadata stored 100% on-chain.",
+        "collection": {
+          "name": "X1 Punk",
+          "family": "X1 Punks"
+        },
+        "attributes": [
+          {
+            "trait_type": "Type",
+            "value": "Female 1"
+          },
+          {
+            "trait_type": "Rarity",
+            "value": "Common"
+          },
+          {
+            "trait_type": "Accessory 1",
+            "value": "Hot Lipstick"
+          },
+          {
+            "trait_type": "Accessory 2",
+            "value": "Frumpy Hair"
+          },
+          {
+            "trait_type": "Accessory 3",
+            "value": "Cigarette"
+          }
+        ],
+        "properties": {
+          "category": "image",
+          "files": [
+            {
+              "type": "image/png",
+              "uri": "inscription"
+            }
+          ]
+        },
+        "inscription": {
+          "protocol": "metaplex-inscription",
+          "version": "1.0",
+          "chain": "x1",
+          "programId": "1NSCRfGeyo7wPUazGbaPBUsTM49e1k2aXewHGARfzSo"
+        }
+      }
     }
   ],
-  "totalInscribed": 149,
-  "lastUpdated": "2026-01-30T09:26:38.912Z"
+  "totalInscribed": 151,
+  "lastUpdated": "2026-01-31T09:14:57.505Z"
 }
